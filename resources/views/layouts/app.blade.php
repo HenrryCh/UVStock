@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
+<head>   
     <meta charset="UTF-8">
     <title>{{ config('app.name') }}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -17,11 +17,11 @@
 
 </head> 
 
-<body class="hold-transition sidebar-mini layout-fixed">
-    
+<body class="hold-transition sidebar-mini layout-fixed"> 
+
 <div class="wrapper">
     <!-- Main Header -->
-    <nav class="main-header navbar navbar-expand navbar-gray navbar-light" style="background-color: #37474F; height: 67px">
+    <nav class="main-header navbar navbar-expand navbar-gray navbar-light" style="background-color: #fff; height: 67px">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -32,13 +32,12 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" >
-                    <img id="campana" src="{{ asset('img/campana0.png') }}" style="height:30px;" class="brand-image-xl.single" onload="obtenerProductosStockMinimo();">
-
+                    <img id="campana" src="{{ asset('img/campana.png') }}" style="height:30px;" class="brand-image-xl.single">
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="border-radius: 8px; left: inherit; right:0px; margin: 12px">   
-                <span class="dropdown-item dropdown-header">Notificaciones</span>
+                    <span class="dropdown-item dropdown-header">Notificaciones</span>
                     <div class="dropdown-divider"></div>
-                    <div class="list-group-item d-flex" id="mensajes" style="font-size:80%; margin: 10px; overflow-y: auto; max-height: 200px;"></div>
+                    <div class="list-group" id="mensajes" style="font-size:80%; margin: 10px; overflow-y: auto; max-height: 200px;"></div>
                     <div class="dropdown-divider"></div>     
                 </div>
             </li>
@@ -46,13 +45,19 @@
                 <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-toggle="dropdown">
                     
                     @if (Auth::check() && Auth::user()->profile_photo_path)
-                    <img src="{{ asset('img/profile/'.auth()->user()->profile_photo_path) }}" class="user-image img-circle elevation-2" alt="User Image">
-                     @else
-                    <img src="{{ asset('img/usuario.png') }}" class="user-image img-circle elevation-2" alt="User Image">
-                     @endif
-                    <span style="color:white;" class="d-none d-md-inline">{{ Auth::user()->name }} </span>
+                        <img src="{{ asset('img/profile/'.auth()->user()->profile_photo_path) }}" class="user-image img-circle elevation-2" alt="User Image">
+                    @else
+                        @if (Auth::check() && Auth::user()->name)
+                            <div class="user-initials img-circle elevation-2" style="background-color: #c6e2ff; color: #73a1f0 ; width: 40px; height: 40px; line-height: 40px; text-align: center; font-size: 18px;">
+                                {{ strtoupper(substr(Auth::user()->nombres, 0, 1).substr(Auth::user()->apellidos, 0, 1)) }}
+                            </div>
+                        @else
+                            <img src="{{ asset('img/usuario.png') }}" class="user-image img-circle elevation-2" alt="User Image">
+                        @endif
+                    @endif
+                    <span style="color:black; margin-left: 5px;" class="d-none d-md-inline">{{ Auth::user()->name }} </span>
                 </a>
-           
+
             <ul class="dropdown-menu dropdown-menu- dropdown-menu-right " style="border-radius: 8px; width: 50px; margin: 12px">
 
                 <!-- Menu Footer-->
@@ -85,21 +90,39 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="sgu-card">
-                                <div class="title" align="center"><span>Datos Personales</span></div>
+                                <div class="title" align="center"><span style="font-size: 20px;">Información del Usuario</span></div>
                                     <div class="dropdown-divider"></div>
-                                        <div class="row">
-                                            <div class="col-md-12 col-lg-3 text-center" style="max-width: 800px; margin: auto;">
+                                        <div class="row" style="border-left: 120px solid transparent;">
+                                            <div class="col-md-12 col-lg-3 text-center" style="max-width: 800px; margin: auto; border-top: 28px solid transparent;"> 
                                                 <div align="center">
                                                     @if (auth()->user()->profile_photo_path)
-                                                    <img  style="border: 1px solid rgb(152, 149, 149); border-radius: 10px; height: 200px; width: 200px;" class="img-profile"  src="{{ asset('img/profile/'.auth()->user()->profile_photo_path) }}" alt="Profile photo">
+                                                        <img id="imgPreview" style="border: 1px solid rgb(152, 149, 149); border-radius: 10px; height: 200px; width: 200px;" class="img-profile"  src="{{ asset('img/profile/'.auth()->user()->profile_photo_path) }}" alt="Profile photo">
                                                     @else
-                                                    <p>Sin foto de perfil</p>
+                                                        @if (Auth::check() && Auth::user()->name)
+                                                            <div >
+                                                                <img id="imgPreview" class="user-image img-circle elevation-2" style="border: 1px solid rgb(152, 149, 149); border-radius: 10px; height: 200px; width: 200px; background-color:#c6e2ff; color:#73a1f0; display: flex; justify-content: center; align-items: center; font-size: 72px; text-transform: uppercase;"
+                                                                alt="{{ strtoupper(substr(Auth::user()->nombres, 0, 1).substr(Auth::user()->apellidos, 0, 1)) }}" >
+                                                            </div>
+                                                        @else
+                                                            <img id="imgPreview" style="border: 1px solid rgb(152, 149, 149); border-radius: 10px; height: 200px; width: 200px;" class="img-profile"  src="" alt="Profile photo">
+                                                        @endif
                                                     @endif
                                                 </div>
-                                                    @can('edit photo')
-                                                        <a href="" data-target="#modal-edit-{{auth()->user()->id}}" data-toggle="modal" title="Editar datos de este registro"><button class="btn btn-info btn-sm shadow"><i class='fa fa-edit'></i></button></a>
-                                                    @endcan
-                                                    @include('layouts.edit')
+                                                    <form id="edit-form" action="/profileguardar" enctype="multipart/form-data" method="POST">
+                                                        @csrf
+                                                        <div class="modal-body d-flex justify-content-center align-items-center">
+                                                            <div class="row">
+                                                                <div class="form-group" align="center">
+                                                                    <button type="button" class="btn btn-primary" onclick="document.getElementById('imagen').click()">Seleccionar Foto</button>
+                                                                    <input type="file" class="form-control-file" id="imagen" name="imagen" onchange="previewImage(event, '#imgPreview')" style="display:none;">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer d-flex justify-content-center align-items-center">
+                                                        
+                                                            <button class="btn btn-primary" type="submit">{{__('Guardar')}}</button>
+                                                        </div>
+                                                    </form>
                                             </div>
                                             <div class="col-md-9 col-lg-9">
                                                 <div class="row container-info">
@@ -154,6 +177,40 @@
 
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('js/appAdminLte3.js') }}" defer></script>
+
+<script>
+    function previewImage(event, imgId) {
+      var reader = new FileReader();
+      reader.onload = function() {
+        var imgElement = document.querySelector(imgId);
+        imgElement.src = reader.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+
+    function obtenerProductosStockMinimo() {
+      fetch('/getProductosStockMinimo')
+        .then(response => response.json())
+        .then(data => {
+          // Aquí procesamos los datos recibidos
+          // console.log('Nombre\tCantidad\tStock');
+          var mensajes = [];
+          data.forEach(producto => {
+             mensajes.push(`Producto: ${producto.nombre} bajo stock mínimo`);
+            // console.log(`${producto.nombre}\t${producto.cantidad}\t${producto.stock_minimo}`);
+          });
+          if(mensajes.length > 0){
+              var imagen = document.getElementById("campana");
+            }
+          var mensajesHTML = mensajes.map(mensaje => `<div class="list-group-item" style="word-wrap: break-word;">${mensaje}</div>`).join('');
+            document.getElementById('mensajes').innerHTML = mensajesHTML;
+        })
+        .catch(error => console.error(error));
+    }
+    obtenerProductosStockMinimo();
+</script>
+
 @yield('third_party_scripts')
 
 @stack('page_scripts')

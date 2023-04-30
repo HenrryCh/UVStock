@@ -1,8 +1,7 @@
 @extends ('layouts.admin')
 @section('title',"Visualizar salida - UVStock")
 @section ('contenido')
-
-<h3> Salida Nro: {{ $salida->id}}</h3>
+<h4> Salida N°: {{ $salida->id}}</h4>
 @if ($errors->any())
 <div class="alert alert-danger">
 	<ul>
@@ -16,7 +15,7 @@
 {!!Form::model($salida,['method'=>'GET','route'=>['salidas.index']])!!}
 {{Form::token()}}
 <div class="card card-primary">
-  	<div class="card-header" style="background-color:orange;color:white;">
+  	<div class="card-header" style="background-color:#F39C12;color:white;">
     	<h3 class="card-title">Salida</h3>
   	</div>
   	<div class="card-body">
@@ -29,7 +28,7 @@
 			</div> -->
 			<div class="col-lg-4">
 				<div class="form-group">
-			    	<label for="fecha">Fecha</label>
+			    	<label for="fecha">Fecha:</label>
 			    	<input type="text" name="fecha" class="form-control" value="{{$salida->fecha}}"  disabled>
 			    </div>
 			</div>
@@ -45,7 +44,7 @@
             
 		</div>
 		<div class="card card-primary">
-	      	<div class="card-header" style="background-color:orange;color:white;">
+	      	<div class="card-header" style="background-color:#F39C12;color:white;">
 	          	Detalle de Salida
 	      	</div>
 	      	<div class="card-body">
@@ -55,20 +54,22 @@
 							<table class="table table-striped table-bordered table-condensed table-hover">
 								<thead class="thead-dark">
 									
-									<th>N°</th>
-                  <th>Código</th>
-                  <th>Descripción</th>
-                  <th>Marca</th>
-                  <th>Categoría</th>
-                  <th>Proveedor</th>
-                  <th>Cantidad</th>
-                  <th>Precio de Venta</th>
-                  <th>Descuento</th>
-                  <th>Subtotal</th>
+									{{--<th>N°</th>--}}
+									<th>Código</th>
+									<th>Nombre</th>
+									<th>Descripción</th>
+									<th>Marca</th>
+									<th>Categoría</th>
+									<th>Proveedor</th>
+									<th>Cantidad</th>
+									<th>Precio de Venta</th>
+									<th>Descuento</th>
+									<th>Subtotal</th>
 								</thead>
 				               @foreach ($detalle_salidas as $key => $detalle_salida)
 								<tr>
-									<td class="text-center">{{$key + 1}}</td>
+									{{--  <td class="text-center">{{$key + 1}}</td>  --}}
+									<td class="text-left">{{$detalle_salida->producto->codigo}}</td>
 									<td class="text-left">{{$detalle_salida->producto->nombre}}</td>
 									<td class="text-left">{{$detalle_salida->producto->descripcion}}</td>
 									<td class="text-left">{{$detalle_salida->producto->marca}}</td>
@@ -92,7 +93,7 @@
 		</div>
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	        <div class="form-group text-right">
-	           	<a href="{{URL::action('App\Http\Controllers\SalidasControlador@index')}}" class="btn btn-danger" title="Regresar al Listado Anterior">{{__('Volver')}}</a>
+	           	<a href="{{URL::action('App\Http\Controllers\SalidasControlador@index')}}" class="btn btn-secondary" title="Regresar al Listado Anterior">{{__('Volver')}}</a>
 	        </div>
 		</div>
 	</div>

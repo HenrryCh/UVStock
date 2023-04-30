@@ -2,7 +2,7 @@
 @section('title',"Visualizar Ingresos - UVStock")
 @section ('contenido')
 
-<h3> Ingreso Nro: {{ $ingreso->id}}</h3>
+<h4> Ingreso N°: {{ $ingreso->id}}</h4>
 @if ($errors->any())
 <div class="alert alert-danger">
 	<ul>
@@ -16,14 +16,14 @@
 {!!Form::model($ingreso,['method'=>'GET','route'=>['ingresos.index']])!!}
 {{Form::token()}}
 <div class="card card-primary">
-  	<div class="card-header" style="background-color:orange;color:white;">
+  	<div class="card-header" style="background-color:#F39C12;color:white;">
     	<h3 class="card-title">Ingreso</h3>
   	</div>
   	<div class="card-body">
 	    <div class="row">
 			<div class="col-lg-4">
 				<div class="form-group">
-			    	<label for="fecha">Fecha</label>
+			    	<label for="fecha">Fecha:</label>
 			    	<input type="text" name="fecha" class="form-control" value="{{$ingreso->fecha}}"  disabled>
 			    </div>
 			</div>
@@ -45,7 +45,7 @@
 			 		  
 		</div>
 		<div class="card card-primary">
-	      	<div class="card-header" style="background-color:orange;color:white;">
+	      	<div class="card-header" style="background-color:#F39C12;color:white;">
 	          	Detalle de Ingreso
 	      	</div>
 	      	<div class="card-body">
@@ -54,20 +54,20 @@
 						<div class="table-responsive">
 							<table class="table table-striped table-bordered table-condensed table-hover">
 								<thead class="thead-dark">
-									<th>N°</th>
-                  <th>Código</th>
-                  <th>Nombre</th>
-                  <th>Descripción</th>
-                  <th>Marca</th>
-                  <th>Categoría</th>
-                  <th>Proveedor</th>
-                  <th>Cantidad</th>
-                  <th>Precio Compra</th>
-                  <th>Subtotal</th>
+									{{--<th>N°</th>--}}
+									<th>Código</th>
+									<th>Nombre</th>
+									<th>Descripción</th>
+									<th>Marca</th>
+									<th>Categoría</th>
+									<th>Proveedor</th>
+									<th>Cantidad</th>
+									<th>Precio Compra</th>
+									<th>Subtotal</th>
 								</thead>
 				               @foreach ($detalle_ingresos as $key => $detalle_ingreso)
 								<tr>
-									<td class="text-center">{{$key +1 }}</td>
+									{{--  <td class="text-center">{{$key +1 }}</td> --}}
 									<td class="text-left">{{$detalle_ingreso->producto->codigo}}</td>
 									<td class="text-left">{{$detalle_ingreso->producto->nombre}}</td>
 									<td class="text-left">{{$detalle_ingreso->producto->descripcion}}</td>
@@ -80,7 +80,7 @@
 								</tr>
 								@endforeach
 								<tfoot>
-									<td colspan="9" class="text-right"><strong>Total :</strong></td>
+									<td colspan="8" class="text-right"><strong>Total :</strong></td>
 									<td>{{ $ingreso->total }}</td>
 								</tfoot>
 							</table>
@@ -91,7 +91,7 @@
 		</div>
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	        <div class="form-group text-right">
-	           	<a href="{{URL::action('App\Http\Controllers\IngresosControlador@index')}}" class="btn btn-danger" title="Regresar al Listado Anterior">{{__('Volver')}}</a>
+	           	<a href="{{URL::action('App\Http\Controllers\IngresosControlador@index')}}" class="btn btn-secondary" title="Regresar al Listado Anterior">{{__('Volver')}}</a>
 	        </div>
 		</div>
 	</div>

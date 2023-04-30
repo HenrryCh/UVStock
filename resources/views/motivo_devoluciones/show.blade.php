@@ -3,8 +3,8 @@
   <div class="modal-dialog modal-dialog-centered " role="document">
     <div class="modal-content">
       <div class="modal-header colorShow">
-        <h4 class="modal-title" id="modal_motivo_devoluciones_Ver_LongTitle">Detalle de Motivo Devolucion</h4>
-        <button type="button" class="btn btn-close btn-info" data-dismiss="modal" aria-label="Close">X</button>
+        <h4 class="modal-title" id="modal_motivo_devoluciones_Ver_LongTitle">Detalle del Motivo de Devolución</h4>
+        <button type="button" class="btn btn-close btn-add" data-dismiss="modal" aria-label="Close">X</button>
       </div>
       {!!Form::model($motivo_devoluciones,['method'=>'GET','route'=>['motivo_devoluciones.index']])!!}
       {{Form::token()}}
@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-lg-12">
            		<div class="form-group">
-	            	<label for="nombre">Nombre *</label>
+	            	<label for="nombre">Nombre: *</label>
 	            	<input type="text" name="nombre" class="form-control" value="{{$motivo_devolucione->nombre}}" disabled>
 	            </div>
             </div>
@@ -30,7 +30,7 @@
           </div>
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-danger" data-dismiss="modal" title="Regresar al Listado Anterior">{{__('Volver')}}</a>
+        <a href="#" class="btn btn-secondary" data-dismiss="modal" title="Regresar al Listado Anterior">{{__('Volver')}}</a>
       </div>
       {!!Form::close()!!} 
     </div>

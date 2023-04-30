@@ -18,7 +18,7 @@
     <a href="#" class="nav-link">
         <i class="nav-icon fa fa-users"></i>
         <p>
-          Usuario
+          Usuarios
           <i class="right fas fa-angle-right"></i> 
         </p>
     </a>
@@ -37,7 +37,7 @@
     <a href="{{URL::action('App\Http\Controllers\ProveedoresControlador@index')}}" class="nav-link">
         <i class="nav-icon fas fa-truck"></i>
         <p>
-          Proveedor
+          Proveedores
           {{--  
           <i class="right fas fa-angle-right"></i>
           --}}
@@ -64,7 +64,7 @@
     <a href="{{URL::action('App\Http\Controllers\CategoriasControlador@index')}}" class="nav-link">
         <i class="nav-icon fas fa-th-list"></i>
         <p>
-          Categoria
+          Categorias
           {{--  
           <i class="right fas fa-angle-right"></i>
           --}}
@@ -88,7 +88,7 @@
     <a href="{{URL::action('App\Http\Controllers\ProductosControlador@index')}}" class="nav-link">
         <i class="nav-icon fas fa-box-open"></i>
         <p>
-          Producto
+          Productos
           {{--  
           <i class="right fas fa-angle-right"></i>
           --}}
@@ -170,7 +170,7 @@
         <li class="nav-item">
             <a href="{{URL::action('App\Http\Controllers\Motivo_devolucionesControlador@index')}}" class="nav-link" style="margin-left: 2rem;">
                 <i class=""></i>
-                <p>Motivo Devoluciones</p>
+                <p>Motivo de Devoluciones</p>
             </a>
         </li>
         @endcan

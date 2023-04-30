@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header colorCreate">
         <h4 class="modal-title" id="modal_Roles_Create_LongTitle">{{__('Nuevo')}} Rol </h4>
-        <button type="button" class="btn btn-close btn-success pull-right" data-dismiss="modal" aria-label="Close">X</button>
+        <button type="button" class="btn btn-close btn-add pull-right" data-dismiss="modal" aria-label="Close">X</button>
       </div>
       {!!Form::open(array('url'=>'roles','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
       {{Form::token()}}
@@ -11,14 +11,14 @@
           <div class="row">
             <div class="col-lg-12"> 
               <div class="form-group">
-                <label for="name">Rol(*)</label>
-                <input type="text" name="name"  class="form-control" placeholder="Ingrese aquí Rol(*)..." required>
+                <label for="name">Rol: *</label>
+                <input type="text" name="name"  class="form-control" placeholder="Ingrese Rol" required>
               </div>
             </div>
             
             <div class="col-lg-12"> 
               <div class="form-group">
-                <label for="guard_name">Aplicación(*)</label>
+                <label for="guard_name">Aplicación *</label>
                 <input type="text" name="guard_name" value="web" class="form-control" placeholder="Ingrese aquí Aplicación(*)..." readonly>
               </div>
             </div>
@@ -43,9 +43,11 @@
                 <div class="col-lg-1">
                   <label>Ver</label>
                 </div>
+                {{--  
                 <div class="col-lg-1">
                   <label>Eliminar</label>
                 </div>
+                --}}
                 <div class="col-lg-1">
                   <label>Reportar</label>
                 </div>
@@ -76,9 +78,11 @@
                 <div class="col-lg-1">
                   <input type="checkbox" name="ver[{{$key2}}]" value="show {{$permiso["tabla"]}}" >
                 </div>
+                {{--
                 <div class="col-lg-1">
                   <input type="checkbox" name="eliminar[{{$key2}}]" value="delete {{$permiso["tabla"]}}" >
                 </div>
+                --}}
                 <div class="col-lg-1">
                   <input type="checkbox" name="reportar[{{$key2}}]" value="report {{$permiso["tabla"]}}" >
                 </div>
@@ -89,8 +93,8 @@
           </div>
       </div>
       <div class="modal-footer">
+        <button class="btn btn-secondary" type="reset">{{__('Limpiar')}}</button>
         <button class="btn btn-primary" type="submit">{{__('Guardar')}}</button>
-        <button class="btn btn-danger" type="reset">{{__('Cancelar')}}</button>
       </div>
       {!!Form::close()!!} 
     </div>

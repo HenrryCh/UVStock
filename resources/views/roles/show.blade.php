@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header colorShow">
         <h4 class="modal-title" id="modal_roles_Ver_LongTitle">Detalle de Rol</h4>
-        <button type="button" class="btn btn-close btn-info pull-right" data-dismiss="modal" aria-label="Close">X</button>
+        <button type="button" class="btn btn-close btn-add pull-right" data-dismiss="modal" aria-label="Close">X</button>
       </div>
       {!!Form::model($roles,['method'=>'GET','route'=>['roles.index']])!!}
       {{Form::token()}}
@@ -12,14 +12,14 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="name">Rol(*)</label>
+                <label for="name">Rol *</label>
                 <input type="text" name="name" class="form-control" value="{{$role->name}}" disabled>
               </div>
             </div>
             
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="guard_name">Aplicación(*)</label>
+                <label for="guard_name">Aplicación *</label>
                 <input type="text" name="guard_name" class="form-control" value="{{$role->guard_name}}" disabled>
               </div>
             </div>
@@ -92,7 +92,7 @@
           </div>
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-danger" data-dismiss="modal" title="Regresar al Listado Anterior">{{__('Volver')}}</a>
+        <a href="#" class="btn btn-secondary" data-dismiss="modal" title="Regresar al Listado Anterior">{{__('Volver')}}</a>
       </div>
       {!!Form::close()!!} 
     </div>

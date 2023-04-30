@@ -1,6 +1,9 @@
 @extends ('layouts.admin')
+@section('title',"Registro de Devoluciones - UVStock")
 @section ('contenido')
-<h3>Nuevo Devoluciones</h3>
+<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12" style="font-family: 'Open Sans', sans-serif; margin-top: 10px;">
+  <h4 class="fw-bold">Nueva Devolución</h4>
+</div>
 @if ($errors->any())
 <div class="alert alert-danger">
 	<ul>
@@ -14,7 +17,7 @@
 {!!Form::open(array('url'=>'devoluciones','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
 {{Form::token()}}
 <div class="card card-primary">
-  <div class="card-header" style="background-color:#F39C12;color:white;">
+  <div class="card-header" style="background-color:#FACC2E;color:white;">
     <h3 class="card-title">Datos del Cliente</h3>
   </div>
   
@@ -29,15 +32,15 @@
       </div>
       <div class="col-lg-4">
         <div class="form-group">
-          <label for="nombre">Nombre *</label>
-         	<input type="text" name="nombre" id="nombre"  class="form-control" placeholder="Digite aquí nombre..." required>
+          <label for="nombre">Nombre:</label>
+         	<input type="text" name="nombre" id="nombre"  class="form-control" placeholder="Ingrese Nombre" required>
           @error('nombre') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
         </div>
       </div>
       <div class="col-lg-4">
         <div class="form-group">
-          <label for="telefono">Telefono</label>
-         	<input type="text" name="telefono" id="telefono"  class="form-control" placeholder="Digite aquí telefono..." >
+          <label for="telefono">Celular:</label>
+         	<input type="text" name="telefono" id="telefono"  class="form-control" placeholder="Ingrese Celular" >
           @error('telefono') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
         </div>
       </div>
@@ -53,25 +56,25 @@
           
             
     </div>
-    <div class="card-header" style="background-color:#F39C12;color:white;">
+    <div class="card-header" style="background-color:#FACC2E;color:white;">
       <h3 class="card-title">Producto</h3>
     </div>  
 
-     <div class="col-lg-4">
+     <div class="col-lg-4" style="margin-top: 10px;">
         <div class="form-group form-inline">
-          <label for="codigo" class="mr-2">Código</label>
+          <label for="codigo" class="mr-2">Código:</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fa fa-barcode"></i></span>
             </div>
-            <input type="text" name="codigo" id="codigo" class="form-control" placeholder="Digite aquí el código" onchange="getProducto();">
+            <input type="text" name="codigo" id="codigo" class="form-control" placeholder="Ingrese Código" onchange="getProducto();">
           </div>
         </div>
       </div>  
 
     <div class="card card-primary">
-      <div class="card-header" style="background-color:#F39C12;color:white;">
-          Detalle de Devoluciones
+      <div class="card-header" style="background-color:#FACC2E;color:white;">
+          Detalle de Devolución
       </div>
       <div class="card-body">
         <div class="row">
@@ -79,7 +82,7 @@
               <label for="descripcion" id="descripcion" class="mr-2">Nombre:</label>
               <input type="hidden" id="categoria">
           </div>
-          <div class="col-lg-2">
+          <div class="col-lg-4">
               <label for="marca" id="marca" class="mr-2">Marca:</label>
               <input type="hidden" id="marcaa">
           </div>
@@ -103,28 +106,30 @@
             </div>
           </div>
           <div class="col-lg-4">
-              <div class="form-group form-inline">
-                  <label for="cantidad">Cantidad *</label>
-                  <input type="number" name="cantidad" min="0" id="cantidad" class="form-control" placeholder="Digite aquí cantidad...">
+              <div class="form-group">
+                  <label for="cantidad">Cantidad: </label>
+                  <input type="number" name="cantidad" min="0" id="cantidad" class="form-control" placeholder="Ingrese Cantidad">
               </div>
+            
           </div>
-
+          {{-- value="{{$motivo_devolucione->id}}">{{ $motivo_devolucione->nombre .' '.$motivo_devolucione->estado }}</option> --}}
           <div class="col-lg-4">
 							<div class="form-group">
-								<label>Motivo Devolucion *</label>
-								<select name="motivo_devolucion_id" id="motivo_devolucion_id" class="form-control" >
-									<option value="">Seleccionar Motivo Devolucion</option>
+								<label>Motivo de Devolución:</label>
+								<select name="motivo_devolucion_id" id="motivo_devolucion_id" class="form-control">
+									<option value="">--SELECCIONE--</option>
 									@foreach ($motivo_devoluciones as $motivo_devolucione)
 										<option {{ old('motivo_devolucion_id') == $motivo_devolucione->id ? 'selected' : '' }} 
-										value="{{$motivo_devolucione->id}}">{{ $motivo_devolucione->nombre .' '.$motivo_devolucione->estado }}</option>
-									@endforeach
+                    value="{{$motivo_devolucione->id}}">{{ $motivo_devolucione->nombre }}</option>
+                      
+                    @endforeach
 								</select>
 							</div>
 						</div>
                                                 
-          <div class="col-lg-4"> 
+          <div class="col-lg-6"> 
                 <div class="form-group">
-                  <a href="#" onclick="agregar();" class="btn btn-success" title="Presione boton para agregar items a Devoluciones">{{__('Agregar')}}</a>
+                  <a href="#" onclick="agregar();" class="btn btn-warning" title="Presione boton para agregar items a Devoluciones">{{__('Agregar')}}</a>
                 </div>
           </div>
         </div>
@@ -133,7 +138,7 @@
             <div class="table-responsive">
                 <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                     <thead class="thead-dark">
-                        <th>N°</th>
+                        {{--<th>N°</th>--}}
                         <th>Código</th>
                         <th>Nombre</th>
                         <th>Marca</th>
@@ -141,8 +146,8 @@
                         <th>Proveedor</th>
                         <th>Cantidad</th>
                         <th>Motivo Devolución</th>
-                        <th>Fecha</th>
-                        <th>Acciones</th>
+                        {{--<th>Fecha</th>--}}
+                        <th>Acción</th>
                     </thead>
                     <tr>
                     </tr>
@@ -155,7 +160,9 @@
     </div>
     <center>
       <div class="form-group text-right">
-        <button class="btn btn-danger" type="reset">{{__('Cancelar')}}</button>
+        {{--  
+        <button class="btn btn-danger" type="reset">{{__('Limpiar')}}</button>
+        --}}
       	<button id="guardar" class="btn btn-primary" type="submit" title="Grabar datos ingresados">{{__('Guardar')}}</button>
       </div>
     </center>
@@ -192,7 +199,8 @@
     fecha=$("#fecha").val();
     nro=cont + 1;
     if(producto_id!="" && cantidad>0){
-      var fila='</tr><tr class="selected" id="fila'+index+'"><td><input type="hidden" name="nro[]" value="'+nro+'">'+nro+'</td><td><input type="hidden" name="codigo[]" value="'+codigo+'">'+codigo+'</td><td><input type="hidden" name="aproducto_id[]" value="'+producto_id+'">'+Producto+'</td><td><input type="hidden" name="marca[]" value="'+marca+'">'+marca+'</td><td><input type="hidden" name="categoria[]" value="'+categoria+'">'+categoria+'</td><td><input type="hidden" name="proveedor[]" value="'+proveedor+'">'+proveedor+'</td><td><input type="hidden" name="acantidad[]" value="'+cantidad+'">'+cantidad+'</td><td class="text-left"><input id="motivo_devolucion_id'+index+'" type="hidden" name="amotivo_devolucion_id[]" value="'+motivo_devolucion_id+'">'+Motivo_devolucione+'</td><td><input type="hidden" name="afecha[]" value="'+fecha+'">'+fecha+'</td><td><button type="button" class="btn btn-warning" onclick="eliminar('+index+');">X</button></td>';
+      //var fila='</tr><tr class="selected" id="fila'+index+'"><td><input type="hidden" name="nro[]" value="'+nro+'">'+nro+'</td><td><input type="hidden" name="codigo[]" value="'+codigo+'">'+codigo+'</td><td><input type="hidden" name="aproducto_id[]" value="'+producto_id+'">'+Producto+'</td><td><input type="hidden" name="marca[]" value="'+marca+'">'+marca+'</td><td><input type="hidden" name="categoria[]" value="'+categoria+'">'+categoria+'</td><td><input type="hidden" name="proveedor[]" value="'+proveedor+'">'+proveedor+'</td><td><input type="hidden" name="acantidad[]" value="'+cantidad+'">'+cantidad+'</td><td class="text-left"><input id="motivo_devolucion_id'+index+'" type="hidden" name="amotivo_devolucion_id[]" value="'+motivo_devolucion_id+'">'+Motivo_devolucione+'</td><td><input type="hidden" name="afecha[]" value="'+fecha+'">'+fecha+'</td><td><button type="button" class="btn btn-warning" onclick="eliminar('+index+');">X</button></td>';
+        var fila='</tr><tr class="selected" id="fila'+index+'"><td><input type="hidden" name="codigo[]" value="'+codigo+'">'+codigo+'</td><td><input type="hidden" name="aproducto_id[]" value="'+producto_id+'">'+Producto+'</td><td><input type="hidden" name="marca[]" value="'+marca+'">'+marca+'</td><td><input type="hidden" name="categoria[]" value="'+categoria+'">'+categoria+'</td><td><input type="hidden" name="proveedor[]" value="'+proveedor+'">'+proveedor+'</td><td><input type="hidden" name="acantidad[]" value="'+cantidad+'">'+cantidad+'</td><td class="text-left"><input id="motivo_devolucion_id'+index+'" type="hidden" name="amotivo_devolucion_id[]" value="'+motivo_devolucion_id+'">'+Motivo_devolucione+'</td><td><button type="button" class="btn btn-danger" onclick="eliminar('+index+');">X</button></td>';
       cont++; index++;
       limpiar();
       evaluar();
@@ -229,7 +237,7 @@
     fetch('/getProducto/'+codigo)
       .then(resp => resp.json())
       .then(producto => {
-          document.getElementById('descripcion').innerText = 'Descripción: '+ producto.nombre;
+          document.getElementById('descripcion').innerText = 'Nombre: '+ producto.nombre;
           document.getElementById('marca').innerText = 'Marca: '+producto.marca;
           document.getElementById('proveedor').innerText = 'Proveedor: '+producto.nombre_proveedor;
           // document.getElementById('cantidad_actual').innerText = 'Cantidad Actual: '+producto.cantidad;

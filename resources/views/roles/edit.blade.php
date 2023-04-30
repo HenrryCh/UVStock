@@ -12,7 +12,7 @@
     <div class="modal-content"  style="width: 100%; height:150%">
       <div class="modal-header colorEdit">
         <h4 class="modal-title" id="modal_roles_Edit_LongTitle">{{__('Editar')}} Rol </h4>
-        <button type="button" class="btn btn-close btn-warning pull-right" data-dismiss="modal" aria-label="Close">X</button>
+        <button type="button" class="btn btn-close btn-add pull-right" data-dismiss="modal" aria-label="Close">X</button>
       </div>
       {!!Form::model($roles,['method'=>'PATCH','files'=>'true','route'=>['roles.update',$role->id]])!!}
       {{Form::token()}}
@@ -20,17 +20,18 @@
           <div class="row">
             <div class="col-lg-12">
            		<div class="form-group">
-	            	<label for="name">Rol(*)</label>
+	            	<label for="name">Rol *</label>
 	            	<input type="text" name="name" class="form-control" value="{{old('name',$role->name)}}" placeholder="Rol..." {{ $role->name=='Admin' ? 'readonly' : 'required' }}>
 	            </div>
             </div>
             
             <div class="col-lg-12">
            		<div class="form-group">
-	            	<label for="guard_name">Aplicación(*)</label>
+	            	<label for="guard_name">Aplicación:</label>
 	            	<input type="text" name="guard_name" class="form-control" value="{{old('guard_name',$role->guard_name)}}" placeholder="Aplicación..." readonly>
 	            </div>
             </div>
+            
           </div>
           <div class="card">
             <div class="row">
@@ -52,9 +53,11 @@
                 <div class="col-lg-1">
                   <label>Ver</label>
                 </div>
+                {{--  
                 <div class="col-lg-1">
                   <label>Eliminar</label>
                 </div>
+                --}}
                 <div class="col-lg-1">
                   <label>Reportar</label>
                 </div>
@@ -85,9 +88,11 @@
                 <div class="col-lg-1">
                   <input type="checkbox" name="ver[{{$key2}}]" value="show {{$permiso["tabla"]}}" {{($permiso["ver"]==1) ? 'checked' : ''}} >
                 </div>
+                {{--  
                 <div class="col-lg-1">
                   <input type="checkbox" name="eliminar[{{$key2}}]" value="delete {{$permiso["tabla"]}}" {{($permiso["eliminar"]==1) ? 'checked' : ''}} >
                 </div>
+                --}}
                 <div class="col-lg-1">
                   <input type="checkbox" name="reportar[{{$key2}}]" value="report {{$permiso["tabla"]}}" {{($permiso["reportar"]==1) ? 'checked' : ''}} >
                 </div>
@@ -98,8 +103,8 @@
           </div>
       </div>
       <div class="modal-footer">
+        <button class="btn btn-secondary" type="reset">{{__('Limpiar')}}</button>
         <button class="btn btn-primary" type="submit">{{__('Guardar')}}</button>
-        <button class="btn btn-danger" type="reset">{{__('Cancelar')}}</button>
       </div>
       {!!Form::close()!!} 
     </div>

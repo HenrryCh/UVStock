@@ -16,6 +16,7 @@
     {{-- Link de Boostrap 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     --}}
+    <link rel="icon" type="image/png" href="/img/logo.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
@@ -44,7 +45,7 @@
     
 <div class="wrapper">
     <!-- Main Header -->
-        <nav class="main-header navbar navbar-expand navbar-gray navbar-light" style="background-color: #37474F; height: 67px">
+        <nav class="main-header navbar navbar-expand navbar-gray navbar-light" style="background-color: #fff; height: 67px">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -55,7 +56,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" >
-                    <img id="campana" src="{{ asset('img/campana0.png') }}" style="height:30px;" class="brand-image-xl.single">
+                    <img id="campana" src="{{ asset('/img/campana0.png') }}" style="height:30px;" class="brand-image-xl.single">
                 </a>
                    
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="border-radius: 8px; left: inherit; right:0px; margin: 12px">   
@@ -68,13 +69,19 @@
             
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-toggle="dropdown">
-                    
                     @if (Auth::check() && Auth::user()->profile_photo_path)
-                    <img src="{{ asset('img/profile/'.auth()->user()->profile_photo_path) }}" class="user-image img-circle elevation-2" alt="User Image">
-                     @else
-                    <img src="{{ asset('img/usuario.png') }}" class="user-image img-circle elevation-2" alt="User Image">
-                     @endif
-                    <span style="color:white;" class="d-none d-md-inline">{{ Auth::user()->name }} </span>
+                        <img src="{{ asset('img/profile/'.auth()->user()->profile_photo_path) }}" class="user-image img-circle elevation-2" alt="User Image">
+                    @else
+                        @if (Auth::check() && Auth::user()->name)
+                            <div class="user-initials img-circle elevation-2" style="background-color: #c6e2ff; color: #73a1f0; width: 40px; height: 40px; line-height: 40px; text-align: center; font-size: 18px;">
+                                {{ strtoupper(substr(Auth::user()->nombres, 0, 1).substr(Auth::user()->apellidos, 0, 1)) }}
+                            </div>
+                        @else
+                            <img src="{{ asset('img/usuario.png') }}" class="user-image img-circle elevation-2" alt="User Image">
+                        @endif
+                    @endif
+
+                    <span style="color:black; margin-left: 5px;" class="d-none d-md-inline">{{ Auth::user()->name }} </span>
                 </a>
                 
                 <ul class="dropdown-menu dropdown-menu- dropdown-menu-right " style="border-radius: 8px; width: 50px; margin: 12px">
@@ -138,10 +145,9 @@
     <!-- Main Footer -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 2023
+            <b>Versión</b> 1.0
         </div>
-        <strong>Copyright &copy; 2023 <a href="" target="_blank">UVStock</a>.</strong> All rights
-        reserved.
+        <strong>Copyright &copy; 2023 <a href="" target="_blank">UVStock</a>.</strong>
     </footer>
 </div>
 
@@ -184,16 +190,17 @@
         .then(data => {
           // Aquí procesamos los datos recibidos
           // console.log('Nombre\tCantidad\tStock');
-          texto = '';
+          var mensajes = [];
           data.forEach(producto => {
-             texto = texto +'Prod.: '+ producto.nombre+ ' bajo stock mínimo\n';
+             mensajes.push(`Producto: ${producto.nombre} bajo stock mínimo`);
             // console.log(`${producto.nombre}\t${producto.cantidad}\t${producto.stock_minimo}`);
           });
-          if(texto!=''){
+          if(mensajes.length > 0){
               var imagen = document.getElementById("campana");
-              imagen.src = "img/campana.png";
+              imagen.src = "/img/campana.png";
             }
-          document.getElementById('mensajes').innerText  = texto;
+          var mensajesHTML = mensajes.map(mensaje => `<div class="list-group-item" style="word-wrap: break-word;">${mensaje}</div>`).join('');
+            document.getElementById('mensajes').innerHTML = mensajesHTML;
         })
         .catch(error => console.error(error));
     }

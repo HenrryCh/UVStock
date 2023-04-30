@@ -1,15 +1,15 @@
 @extends ('layouts.admin')
 @section('title',"Inicio - UVStock")
 @section ('contenido')
-<!-- Content Header (Page header) -->
 
+<!-- Content Header (Page header)
 <div class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
-      <div class="col-sm-6 d-none">
-        <h1 class="m-0 text-dark">Dashboards UVStock</h1>
+      <div class="col-sm-6 " style="font-family: 'Open Sans', sans-serif;">
+        <h4 class="m-0 text-dark">Inicio</h4>
       </div>
-      <div class="col-sm-6 d-none">
+      <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active">Dashboard </li>
@@ -17,11 +17,27 @@
       </div>
     </div>
   </div>
-</div>
-<!-- /.content-header -->
+</div>  -->
+{{-- Botones --}}
+
 <div class="row">
-  
-  
+  <div class="col-8">
+    <div class="row">
+      <div class="col-md-12 text-left">
+        <div class="filtro-ventas d-inline-flex" style="font-family: 'Open Sans', sans-serif; margin-top: 10px;">
+          <button class="btn btn-default" onclick="filtrarVentas('hoy');filtrarProductos('hoy');filtrarIngresos('hoy');filtrarSalidas('hoy');">Hoy</button>
+          <button class="btn btn-default" onclick="filtrarVentas('ultimos7dias');filtrarProductos('ultimos7dias');filtrarIngresos('ultimos7dias');filtrarSalidas('ultimos7dias');">Últimos 7 días</button>
+          <button class="btn btn-default" onclick="filtrarVentas('esteMes');filtrarProductos('esteMes');filtrarIngresos('esteMes');filtrarSalidas('esteMes');">Este mes</button>
+          <button class="btn btn-default" onclick="filtrarVentas('esteAno');filtrarProductos('esteAno');filtrarIngresos('esteAno');filtrarSalidas('esteAno');">Este año</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- /.content-header -->
+<div class="row" style="font-family: 'Open Sans', sans-serif; margin-top: 10px;">
 
   @can('dashboard productos')
   <div class="col-lg-3 col-6">
@@ -32,13 +48,11 @@
         <br>
         <h5 class="text-center" style="color:#F39C12;">Productos</h5>
         <h5 class="text-center">{{$conteoProductos}}</h5>
-
-        
       </div>
       <div class="icon">
         <i class="ion ion-bag"></i>
       </div>
-      <a href="{{URL::action('App\Http\Controllers\ProductosControlador@index')}}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{URL::action('App\Http\Controllers\ProductosControlador@index')}}" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   @endcan
@@ -50,13 +64,13 @@
       <div class="inner">
         <center><i class="nav-icon fas fa-th-list" style="font-size: 3em; color:magenta;"></i></center>
         <br>
-        <h5 class="text-center" style="color:magenta;">Categorias</h5>
+        <h5 class="text-center" style="color:magenta;">Categorías</h5>
         <h5 class="text-center">{{$conteoCategorias}}</h5>
       </div>
       <div class="icon">
         <i class="ion ion-bag"></i>
       </div>
-      <a href="{{URL::action('App\Http\Controllers\CategoriasControlador@index')}}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{URL::action('App\Http\Controllers\CategoriasControlador@index')}}" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   @endcan  
@@ -92,14 +106,14 @@
       <div class="icon">
         <i class="ion ion-bag"></i>
       </div>
-      <a href="{{URL::action('App\Http\Controllers\SalidasControlador@index')}}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{URL::action('App\Http\Controllers\SalidasControlador@index')}}" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   @endcan
 </div>
 
 
-
+{{--  
 <div class="row">
   <div class="col-8">
     <div class="row">
@@ -112,11 +126,9 @@
         </div>
       </div>
     </div>
-
   </div>
-
 </div><br>
-
+--}}
 <div class="container">
   <div class="row">
     <div class="col-md-8">
@@ -237,19 +249,19 @@ function actualizarGrafico2(data){
         label: 'Ventas',
         data: data,
         backgroundColor: [
-          'RGBA(56, 135, 188, 1.0)', 
-          'RGBA(99, 161, 184, 1.0)', 
-          'RGBA(161, 202, 167, 1.0)', 
-          'RGBA(232, 220, 163, 1.0)', 
-          'RGBA(244, 154, 96, 1.0)', 
+          '#fe9365',
+          '#00acac',
+          '#1cc88a',
+          '#6658dd',
+          '#f1556c',
           // agregar más colores aquí si se tienen más datos de ventas
         ],
         borderColor: [
-          'RGBA(56, 135, 188, 1.0)', 
-          'RGBA(99, 161, 184, 1.0)', 
-          'RGBA(161, 202, 167, 1.0)', 
-          'RGBA(232, 220, 163, 1.0)', 
-          'RGBA(244, 154, 96, 1.0)', 
+          '#fe9365',
+          '#00acac',
+          '#1cc88a',
+          '#6658dd',
+          '#f1556c',
           // agregar más colores aquí si se tienen más datos de ventas
         ],
         borderWidth: 1

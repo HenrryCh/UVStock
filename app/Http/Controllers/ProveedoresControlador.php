@@ -38,7 +38,8 @@ class ProveedoresControlador extends Controller
     }
     public function store (ProveedoresFormRequest $request){
         // try{
-            dd('paso 01');
+
+            //dd('paso 01');
             $proveedore=new Proveedore;
             $proveedore->nombre=$request->get('nombre');
             $proveedore->encargado=$request->get('encargado');
@@ -48,7 +49,7 @@ class ProveedoresControlador extends Controller
             $proveedore->direccion=$request->get('direccion');
             $proveedore->estado=$request->get('estado');
             $proveedore->save();
-            dd('paso 02');
+            //dd('paso 02');
             toastr()->success(__('Grabación exitosa...'));
         // }catch(\Exception $e){
         //     //DB::rollback(); // en caso de error anulo transaccion

@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Input;   // para subir la imagen desde la maquina
 use Illuminate\Support\Facades\Storage; // es necesario si hay campo con imagenes: foto, imagen, logos etc
 use Barryvdh\DomPDF\Facade\Pdf;
 
+
 class SalidasControlador extends Controller
 {
     public function __construct(){
@@ -39,6 +40,8 @@ class SalidasControlador extends Controller
             return view('salidas.index',compact('hoy','salidas','searchText','productos',));
         }
     }
+
+    
      public function report(Request $request){
         $categorias=Categoria::where('estado',true)->get();
         $proveedores=Proveedore::where('estado',true)->get();
@@ -114,12 +117,16 @@ class SalidasControlador extends Controller
         // }
         return Redirect::to('salidas');
     }
+
+
     public function show($id){
         $salida=Salida::findOrFail($id);
         $detalle_salidas=Detalle_salida::where('salida_id',$id)
             ->get();
         return view('salidas.show',compact('salida','detalle_salidas',));
     }
+
+
     public function edit($id){
         $salida=Salida::findOrFail($id);
         $detalle_salidas=Detalle_salida::where('salida_id',$id)
@@ -128,6 +135,8 @@ class SalidasControlador extends Controller
         
         return view('salidas.edit',compact('salida','detalle_salidas','detalle_salidas','productos',));
     }
+
+
     public function update(SalidasFormRequest $request,$id){
         try{
             DB::beginTransaction();
@@ -169,6 +178,8 @@ class SalidasControlador extends Controller
                     $detalle_salidas->save();
                 }    
                 $i++;
+
+
             }
             // Eliminar si algun item fue eliminado
             $detalle_salidas=DB::table('detalle_salidas')
@@ -211,6 +222,8 @@ class SalidasControlador extends Controller
         }            
         return Redirect::to('salidas');
     }
+
+
     public function pdf($id){
         set_time_limit(600);
         $salida=Salida::findOrFail($id);

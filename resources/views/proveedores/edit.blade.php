@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header colorEdit">
         <h4 class="modal-title" id="modal_proveedores_Edit_LongTitle">{{__('Editar')}} Proveedor</h4>
-        <button type="button" class="btn btn-close btn-warning pull-right" data-dismiss="modal" aria-label="Close">X</button>
+        <button type="button" class="btn btn-close btn-add pull-right" data-dismiss="modal" aria-label="Close">X</button>
       </div>
       {!!Form::model($proveedores,['method'=>'PATCH','files'=>'true','route'=>['proveedores.update',$proveedore->id]])!!}
       {{Form::token()}}
@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-lg-6">
            		<div class="form-group">
-	            	<label for="nombre">Nombre *</label>
+	            	<label for="nombre">Distribuidor *</label>
 	            	<input type="text" name="nombre" class="form-control" value="{{old('nombre',$proveedore->nombre)}}" placeholder="Nombre..." required>
                 @error('nombre') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
 	            </div>
@@ -36,7 +36,7 @@
             
             <div class="col-lg-6">
            		<div class="form-group">
-	            	<label for="telefono">Telefono *</label>
+	            	<label for="telefono">Cecular *</label>
 	            	<input type="text" name="telefono" class="form-control" value="{{old('telefono',$proveedore->telefono)}}" placeholder="Telefono..." required>
                 @error('telefono') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
 	            </div>
@@ -52,7 +52,7 @@
             
             <div class="col-lg-6">
            		<div class="form-group">
-	            	<label for="direccion">Direccion</label>
+	            	<label for="direccion">Dirección</label>
 	            	<input type="text" name="direccion" class="form-control" value="{{old('direccion',$proveedore->direccion)}}" placeholder="Direccion..." >
                 @error('direccion') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
 	            </div>
@@ -60,7 +60,7 @@
             
             <div class="col-lg-6">
                   <div class="form-group">
-                        <label>Estado(*)</label>
+                        <label>Estado *</label>
                         <select name="estado" class="form-control"  required>
                               <option @if ($proveedore->estado==  1) selected @endif
                                 value="1">Activo</option>
@@ -74,7 +74,7 @@
           </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-danger" type="reset">{{__('Cancelar')}}</button>
+        <button class="btn btn-secondary" type="reset">{{__('Limpiar')}}</button>
         <button class="btn btn-primary" type="submit">{{__('Guardar')}}</button>
       </div>
       {!!Form::close()!!} 

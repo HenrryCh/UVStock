@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header colorEdit">
         <h4 class="modal-title" id="modal_users_Edit_LongTitle">{{__('Editar')}} Usuario</h4>
-        <button type="button" class="btn btn-close btn-warning pull-right" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="btn btn-close btn-add pull-right" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">X</span>
         </button>
       </div>
@@ -14,26 +14,26 @@
             
             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12"> 
                   <div class="form-group">
-                    <label for="cedula">Cedula(*)</label>
+                    <label for="cedula">Cedula *</label>
                     <input type="text" name="cedula" class="form-control" value="{{old('cedula',$users->cedula)}}" placeholder="Cedula(*)..." required>
                   </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12"> 
                   <div class="form-group">
-                    <label for="nombres">Nombres(*)</label>
+                    <label for="nombres">Nombres *</label>
                     <input type="text" name="nombres" id="nombres{{$users->id}}" class="form-control" value="{{old('nombres',$users->nombres)}}" placeholder="Nombres(*)..." onchange="colocarName2({{$users->id}});" required>
                   </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12"> 
                   <div class="form-group">
-                    <label for="name">Apellidos(*)</label>
+                    <label for="name">Apellidos *</label>
                     <input type="text" name="apellidos" id="apellidos{{$users->id}}" class="form-control" value="{{old('apellidos',$users->apellidos)}}"placeholder="Apellidos(*)..." onchange="colocarName2({{$users->id}});" required>
                   </div>
             </div>
 
             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12"> 
                   <div class="form-group">
-                    <label for="celular">Celular(*)</label>
+                    <label for="celular">Celular *</label>
                     <input type="text" name="celular" class="form-control" value="{{old('celular',$users->celular)}}" placeholder="Celular(*)..." required>
                   </div>
             </div>
@@ -47,14 +47,14 @@
 
             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
            		<div class="form-group">
-	            	<label for="email">Email(*)</label>
+	            	<label for="email">Email *</label>
 	            	<input type="email" name="email" class="form-control" value="{{old('email',$users->email)}}" placeholder="Email(*)..." required>
 	            </div>
             </div>
 
             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
            		<div class="form-group">
-	            	<label for="password">Password(*)</label>
+	            	<label for="password">Contraseña *</label>
 	            	<input type="password" name="password" class="form-control" value="{{old('password',$users->password)}}" placeholder="Password(*)..." required>
 	            </div>
             </div>
@@ -68,9 +68,9 @@
 
             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                 <div class="form-group">
-                    <label>Rol(*)</label>
+                    <label>Rol *</label>
                     <select name="idrol" id="idrol" class="form-control" required ">
-                        <option value="">Seleccionar</option>
+                        <option value="">--SELECCIONAR--</option>
                         @foreach ($roles as $rol)
                             <option 
                                 {{ old('idrol',$users->rol_id) == $rol->id ? 'selected' : '' }}
@@ -84,8 +84,9 @@
           </div>
       </div>
       <div class="modal-footer">
+        
+        <button class="btn btn-secondary" type="reset">{{__('Limpiar')}}</button>
         <button class="btn btn-primary" type="submit">{{__('Guardar')}}</button>
-        <button class="btn btn-danger" type="reset">{{__('Cancelar')}}</button>
       </div>
       {!!Form::close()!!} 
     </div>
