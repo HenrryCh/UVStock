@@ -2,9 +2,9 @@
 <html lang="en">
 <head>   
     <meta charset="UTF-8">
-    <title>{{ config('app.name') }}</title>
+    <title>Perfil - UVStock </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
+    <link rel="icon" type="image/png" href="/img/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
           crossorigin="anonymous"/>
@@ -113,7 +113,7 @@
                                                         <div class="modal-body d-flex justify-content-center align-items-center">
                                                             <div class="row">
                                                                 <div class="form-group" align="center">
-                                                                    <button type="button" class="btn btn-primary" onclick="document.getElementById('imagen').click()">Seleccionar Foto</button>
+                                                                    <button type="button" class="btn btn-add" onclick="document.getElementById('imagen').click()">Seleccionar Foto</button>
                                                                     <input type="file" class="form-control-file" id="imagen" name="imagen" onchange="previewImage(event, '#imgPreview')" style="display:none;">
                                                                 </div>
                                                             </div>
@@ -168,10 +168,9 @@
     <!-- Main Footer -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.0.5
+            <b>Versión</b> 1.0
         </div>
-        <strong>Copyright &copy; 2014-2022 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-        reserved.
+        <strong>Copyright &copy; 2023 <a href="">UVStock</a>.</strong> 
     </footer>
 </div>
 

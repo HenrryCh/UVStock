@@ -89,7 +89,6 @@
 									</span>
 								</span>
 							</td>
-							
 							<td class="d-flex justify-content-start">
 								
 								<a href="" data-target="#modal-ver-{{$users->id}}" data-toggle="modal" title="Ver datos de este registro"><button class="btn btn-info btn-sm shadow mx-1"><i class='fa fa-eye'></i></button></a>

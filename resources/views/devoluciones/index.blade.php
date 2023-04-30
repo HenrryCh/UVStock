@@ -1,4 +1,5 @@
 @extends ('layouts.admin')
+@section('title',"Devoluciones - UVStock")
 @section ('contenido')
 <div class="row">
 
@@ -43,7 +44,7 @@
 							<th class="text-center">Celular</th>
 							<th class="text-center">Fecha</th>
 							<th class="text-center">Estado</th>
-							<th class="text-center">{{__('Opciones')}}</th>
+							<th class="text-center">{{__('Acciones')}}</th>
 						</thead>
 		               @foreach ($devoluciones as $devolucione)
 						<tr>

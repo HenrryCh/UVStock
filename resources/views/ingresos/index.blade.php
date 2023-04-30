@@ -48,7 +48,7 @@
 							<th class="text-center">Total</th>
 
 							<!-- <th class="text-center">Proveedor</th> -->
-							<th class="text-center">{{__('Opciones')}}</th>
+							<th class="text-center">{{__('Acción')}}</th>
 						</thead>
 		               @foreach ($ingresos as $ingreso)
 						<tr>

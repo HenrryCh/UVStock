@@ -47,7 +47,7 @@
 							<!-- <th class="text-center">Cliente</th> -->
 							<th class="text-center">Total</th>
 							<!-- <th class="text-center">Estado</th> -->
-							<th class="text-center">{{__('Opciones')}}</th>
+							<th class="text-center">{{__('Acción')}}</th>
 						</thead>
 		               @foreach ($salidas as $salida)
 						<tr>
