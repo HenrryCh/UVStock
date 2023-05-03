@@ -38,7 +38,8 @@
 </div>
 
 <div class="form-group">
-    <button type="submit" class="btn btn-primary">{{__('Filtrar')}}</button>
+    <button type="submit" class="btn btn-info">
+        <i class="fas fa-sliders-h"></i>{{__(' Filtrar')}}</button>
 </div>
 {{Form::close()}}
 

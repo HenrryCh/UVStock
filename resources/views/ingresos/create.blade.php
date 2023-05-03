@@ -15,7 +15,7 @@
 {!!Form::open(array('url'=>'ingresos','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
 {{Form::token()}}
 <div class="card card-warning" style="margin-top: 10px;">
-  <div class="card-header" style="background-color: #FACC2E;color:white;">
+  <div class="card-header" style="background-color: #FAAC58;color:white;">
     <h3 class="card-title" >Ingresos</h3>
   </div>
   <div class="card-body">
@@ -75,7 +75,7 @@
 
 
     <div class="card card-warning">
-      <div class="card-header" style="background-color:#FACC2E;color:white;">
+      <div class="card-header" style="background-color:#FFA047;color:white;">
           Detalle de Ingresos
       </div>
 
@@ -134,10 +134,15 @@
           </div>
 
           <div class="col-lg-4"> 
-                <div class="form-group form-inline">
-                  <a href="#" onclick="agregar();" class="btn btn-warning" title="Presione boton para agregar items a Ingresos">{{__('Agregar')}}</a>
-                </div>
+            <div class="form-group form-inline">
+              <a href="#" onclick="agregar();" class="btn btn-add" title="Presione boton para agregar items a Ingresos">
+                <i class="fa fa-plus-circle"></i> {{__('Agregar')}}
+              </a>
+            </div>
           </div>
+          
+
+
         </div>
 
         <div class="row">

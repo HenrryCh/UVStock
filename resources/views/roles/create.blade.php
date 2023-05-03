@@ -18,7 +18,7 @@
             
             <div class="col-lg-12"> 
               <div class="form-group">
-                <label for="guard_name">Aplicación *</label>
+                <label for="guard_name">Aplicación:</label>
                 <input type="text" name="guard_name" value="web" class="form-control" placeholder="Ingrese aquí Aplicación(*)..." readonly>
               </div>
             </div>
@@ -29,7 +29,7 @@
                   <label></label>
                 </div>
                 <div class="col-lg-1">
-                  <label>Dashboard</label>
+                  <label>Inicio</label>
                 </div>
                 <div class="col-lg-1">
                   <label>Listar</label>
@@ -38,10 +38,10 @@
                   <label>Crear</label>
                 </div>
                 <div class="col-lg-1">
-                  <label>Editar</label>
+                  <label>Ver</label>
                 </div>
                 <div class="col-lg-1">
-                  <label>Ver</label>
+                  <label>Editar</label>
                 </div>
                 {{--  
                 <div class="col-lg-1">
@@ -56,6 +56,7 @@
             @if($key==1)
             @foreach( $rol2['permisos'] as $key2 => $permisito)
               <div style="display: none"> {{ $permiso = collect($permisito)}} </div>
+              @if ($permiso["tabla"] !== 'negocio')
               <div class="row">
                 <div class="col-lg-1">
                   <label></label>
@@ -73,20 +74,32 @@
                   <input type="checkbox" name="crear[{{$key2}}]" value="create {{$permiso["tabla"]}}" >
                 </div>
                 <div class="col-lg-1">
-                  <input type="checkbox" name="editar[{{$key2}}]" value="edit {{$permiso["tabla"]}}" >
-                </div>
-                <div class="col-lg-1">
                   <input type="checkbox" name="ver[{{$key2}}]" value="show {{$permiso["tabla"]}}" >
                 </div>
+                <div class="col-lg-1">
+                  @if ($permiso["tabla"] !== 'salidas' && $permiso["tabla"] !== 'ingresos' && $permiso["tabla"] !== 'devoluciones')
+                    <input type="checkbox" name="editar[{{$key2}}]" value="edit {{$permiso["tabla"]}}" >
+                  @endif
+                  {{--  
+                  <input type="checkbox" name="editar[{{$key2}}]" value="edit {{$permiso["tabla"]}}" >
+                    --}}
+                </div>
+                
                 {{--
                 <div class="col-lg-1">
                   <input type="checkbox" name="eliminar[{{$key2}}]" value="delete {{$permiso["tabla"]}}" >
                 </div>
                 --}}
                 <div class="col-lg-1">
+                  @if ($permiso["tabla"] !== 'categorias' && $permiso["tabla"] !== 'motivo_devoluciones' && $permiso["tabla"] !== 'proveedores')
+                    <input type="checkbox" name="reportar[{{$key2}}]" value="report {{$permiso["tabla"]}}" >
+                  @endif
+                  {{--  
                   <input type="checkbox" name="reportar[{{$key2}}]" value="report {{$permiso["tabla"]}}" >
+                    --}}
                 </div>
               </div>
+              @endif
             @endforeach
             @endif
             @endforeach

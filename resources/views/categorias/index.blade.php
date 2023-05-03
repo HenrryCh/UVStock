@@ -56,9 +56,22 @@
 							<tr>
 								
 								<td class="text-center">{{$categoria->nombre}}</td>
-								<td class="text-center"><button class="btn @if ($categoria->estado==1 or $categoria->estado== "active") btn-success @else btn-secondary @endif  btn-sm">@if ($categoria->estado==1 or $categoria->estado=="active") Activo @else Inactivo @endif</button></td>
+								{{--  
+								<td class="text-center"><button class="btn @if ($categoria->estado==1 or $categoria->estado== "active") btn-success @else btn-secondary @endif  btn-sm">
+									@if ($categoria->estado==1 or $categoria->estado=="active") Activo @else Inactivo @endif</button></td>
+								--}}
+								<td class="text-center">
+									<span class="badge @if ($categoria->estado==1 or $categoria->estado== "active") badge-success @else badge-secondary @endif btn-sm badge" style="font-size: 14px; padding: 5px 10px; border-radius: 5px; text-align: center; width: 65px; font-weight: normal;">
+									@if ($categoria->estado==1 or $categoria->estado=="active")
+										Activo
+									@else
+										Inactivo
+									@endif
+									</span>
+								</td>
+
+
 								<td class="d-flex justify-content-center">
-									
 									@can('show categorias')
 			                        <a href="" data-target="#modal-ver-{{$categoria->id}}" data-toggle="modal" title="Ver datos de este registro"><button class="btn btn-info btn-sm shadow mx-1"><i class='fa fa-eye'></i></button></a>
 			                        @endcan

@@ -73,7 +73,7 @@
                         <img src="{{ asset('img/profile/'.auth()->user()->profile_photo_path) }}" class="user-image img-circle elevation-2" alt="User Image">
                     @else
                         @if (Auth::check() && Auth::user()->name)
-                            <div class="user-initials img-circle elevation-2" style="background-color: #c6e2ff; color: #73a1f0; width: 40px; height: 40px; line-height: 40px; text-align: center; font-size: 18px;">
+                            <div class="user-initials img-circle elevation-2" style="background-color: #adb5bd ; color: white; width: 40px; height: 40px; line-height: 40px; text-align: center; font-size: 18px;">
                                 {{ strtoupper(substr(Auth::user()->nombres, 0, 1).substr(Auth::user()->apellidos, 0, 1)) }}
                             </div>
                         @else

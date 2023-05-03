@@ -28,13 +28,13 @@ class PermissionsSeeder extends Seeder
         }
 
         // Creación de roles
-        $admin = Role::create(['name' => 'Admin']); 
+        $gerente = Role::create(['name' => 'Gerente']); 
         $servicio = Role::create(['name' => 'Servicio']); 
         $cliente = Role::create(['name' => 'Cliente']); 
 
         // Asignamos roles a los usuarios
         $user = User::find(1);
-        $user->assignRole('Admin');
+        $user->assignRole('Gerente');
     }
 
     public function data()

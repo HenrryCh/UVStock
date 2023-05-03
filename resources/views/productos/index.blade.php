@@ -63,7 +63,7 @@
 							<th class="text-center">Stock Minimo</th>
 							--}}
 							<th class="text-center">Estado</th>
-							<th class="text-center">{{__('Acciones')}}</th>
+							<th class="text-center">{{__('Aciones')}}</th>
 						</thead>
 		                @foreach ($productos as $producto)
 							<tr>
@@ -82,7 +82,19 @@
 								{{--  
 								<td class="text-center">{{$producto->stock_minimo}}</td>
 								--}}
-								<td class="text-center"><button class="btn @if ($producto->estado==1 or $producto->estado== "active") btn-success @else btn-secondary @endif  btn-sm">@if ($producto->estado==1 or $producto->estado=="active") Activo @else Inactivo @endif</button></td>
+								{{--  
+								<td class="text-center"><button class="btn @if ($producto->estado==1 or $producto->estado== "active") btn-success @else btn-secondary @endif  btn-sm">
+									@if ($producto->estado==1 or $producto->estado=="active") Activo @else Inactivo @endif</button></td>
+								--}}
+								<td class="text-center">
+									<span class="badge @if ($producto->estado==1 or $producto->estado== "active") badge-success @else badge-secondary @endif btn-sm badge" style="font-size: 14px; padding: 5px 10px; border-radius: 5px; text-align: center; width: 65px; font-weight: normal;">
+									@if ($producto->estado==1 or $producto->estado=="active")
+										Activo
+									@else
+										Inactivo
+									@endif
+									</span>
+								</td>
 								<td class="d-flex justify-content-center">
 									@can('show productos')
 			                        <a href="" data-target="#modal-ver-{{$producto->id}}" data-toggle="modal" title="Ver datos de este registro"><button class="btn btn-info btn-sm shadow mx-1"><i class='fa fa-eye'></i></button></a>

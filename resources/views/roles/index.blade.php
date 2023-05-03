@@ -50,7 +50,7 @@
 					{{-- crud añadido --}}
 					<table id="crud" class="table table-striped table-bordered table-condensed table-hover table-responsive-sm">
 						<thead>
-							<th>Rol</th>
+							<th class="text-center">Rol</th>
 							{{--  
 							<th>Aplicación</th>
 							<th>Created At</th>
@@ -60,8 +60,7 @@
 						</thead>
 		                @foreach ($roles as $role)
 							<tr>
-								
-								<td>{{$role->name}}</td>
+								<td class="text-center">{{$role->name}}</td>
 								{{-- 
 								<td>{{$role->guard_name}}</td>
 								<td>{{$role->created_at}}</td>

@@ -45,7 +45,7 @@
 		<div class="col-lg-4 col-md-8 col-sm-8 col-xs-12 float-right">
 			<div class="text-right">
 				<button type="button" class="btn btn-add" data-toggle="modal" data-target="#modal_Users_Create">
-					<i class="fa fa-plus-circle"></i> {{__('Nuevo')}}
+					<i class="fas fa-user-plus"></i> {{__('Nuevo')}}
 				</button>
 			</div>
 		</div>
@@ -85,7 +85,8 @@
 							<td class="text-center">
 								<span class="badge @if ($users->deleted_at==null) badge-success @else badge-secondary @endif" style="font-size: 14px; padding: 5px 10px; border-radius: 5px; text-align: center; width: 65px;">
 									<span style="font-weight: @if ($users->deleted_at==null) normal @else bold @endif">
-										@if ($users->deleted_at==null) Activo @else <span style="font-weight:normal;">Inactivo</span> @endif
+										@if ($users->deleted_at==null) Activo 
+										@else <span style="font-weight:normal;">Inactivo</span> @endif
 									</span>
 								</span>
 							</td>
@@ -100,7 +101,7 @@
 		                        <form action="/users/{{ $users->id}}/estado" method="POST">
 								    @csrf
 								    <input type="hidden" name="_method" value="POST">
-								    <button class="btn btn-{{$users->deleted_at==null ? 'secondary' : 'success'}} btn-sm shadow mx-1" type="submit" style="width: 82px;" {{ $users->getRoleNames()->join(', ') =='Admin' ? 'disabled' :'' }}>{{ $users->deleted_at==null ? 'Desactivar' : 'Activar' }}</button>
+								    <button class="btn btn-{{$users->deleted_at==null ? 'secondary' : 'success'}} btn-sm shadow mx-1" type="submit" style="width: 82px;" {{ $users->getRoleNames()->join(', ') =='Gerente' ? 'disabled' :'' }}>{{ $users->deleted_at==null ? 'Desactivar' : 'Activar' }}</button>
 								</form>
 								@endcan
 								

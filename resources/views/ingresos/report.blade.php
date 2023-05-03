@@ -14,7 +14,7 @@
 			{!! Form::open(array('url'=>'ingresos_report','method'=>'GET','autocomplete'=>'off','role'=>'search')) !!}
 		<div class="row">
 			<div class="col-lg-6">
-	        <div class="form-group form-inline">
+	        <div class="form-group">
 	            <label style="display: inline-block;">Categoría:</label>
 	            <select name="categoria_id" id="categoria_id" class="form-control" style="display: inline-block;">
 	                <option value="">--Seleccione--</option>
@@ -26,7 +26,7 @@
 	    	</div>
 
 		    <div class="col-lg-6">
-		        <div class="form-group form-inline">
+		        <div class="form-group">
 		            <label style="display: inline-block;">Proveedor:</label> 
 		            <select name="proveedor_id" id="proveedor_id" class="form-control" style="display: inline-block;">
 		                <option value="">--Selccione--</option>
@@ -54,7 +54,8 @@
 				</div>
 				<div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary">Filtrar</button>
+						<button type="submit" class="btn btn-info">
+							<i class="fas fa-sliders-h"></i> Filtrar</button>
 					</div>
 				</div>
 			</div>

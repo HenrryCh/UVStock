@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-lg-6">
            		<div class="form-group">
-	            	<label for="nombre">Distribuidor *</label>
+	            	<label for="nombre">Distribuidor: *</label>
 	            	<input type="text" name="nombre" class="form-control" value="{{old('nombre',$proveedore->nombre)}}" placeholder="Nombre..." required>
                 @error('nombre') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
 	            </div>
@@ -20,7 +20,7 @@
             
             <div class="col-lg-6">
            		<div class="form-group">
-	            	<label for="encargado">Encargado *</label>
+	            	<label for="encargado">Encargado: *</label>
 	            	<input type="text" name="encargado" class="form-control" value="{{old('encargado',$proveedore->encargado)}}" placeholder="Encargado..." required>
                 @error('encargado') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
 	            </div>
@@ -28,7 +28,7 @@
             
             <div class="col-lg-6">
            		<div class="form-group">
-	            	<label for="ruc">Ruc *</label>
+	            	<label for="ruc">Ruc: *</label>
 	            	<input type="text" name="ruc" class="form-control" value="{{old('ruc',$proveedore->ruc)}}" placeholder="Ruc..." required>
                 @error('ruc') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
 	            </div>
@@ -36,7 +36,7 @@
             
             <div class="col-lg-6">
            		<div class="form-group">
-	            	<label for="telefono">Cecular *</label>
+	            	<label for="telefono">Celular: *</label>
 	            	<input type="text" name="telefono" class="form-control" value="{{old('telefono',$proveedore->telefono)}}" placeholder="Telefono..." required>
                 @error('telefono') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
 	            </div>
@@ -44,7 +44,7 @@
             
             <div class="col-lg-6">
            		<div class="form-group">
-	            	<label for="correo">Correo *</label>
+	            	<label for="correo">Correo: *</label>
 	            	<input type="email" name="correo" class="form-control" value="{{old('correo',$proveedore->correo)}}" placeholder="Correo..." required>
                 @error('correo') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
 	            </div>
@@ -52,7 +52,7 @@
             
             <div class="col-lg-6">
            		<div class="form-group">
-	            	<label for="direccion">Dirección</label>
+	            	<label for="direccion">Dirección:</label>
 	            	<input type="text" name="direccion" class="form-control" value="{{old('direccion',$proveedore->direccion)}}" placeholder="Direccion..." >
                 @error('direccion') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
 	            </div>

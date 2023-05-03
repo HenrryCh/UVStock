@@ -51,7 +51,20 @@
 							<td class="text-center">{{$devolucione->nombre}}</td>
 							<td class="text-center">{{$devolucione->telefono}}</td>
 							<td class="text-center">{{$devolucione->fecha}}</td>
+							{{--  
 							<td class="text-center"><button class="btn btn-{{$devolucione->estado ? 'secondary' : 'success'}} btn-sm" >@if ($devolucione->estado==1 or $devolucione->estado=="active") Pendiente @else Finalizado @endif</button></td>
+							--}}
+							
+							<td class="text-center">
+								<span class="badge @if ($devolucione->estado==1 or $devolucione->estado== "active") badge-secondary @else badge-success @endif btn-sm badge" style="font-size: 14px; padding: 5px 10px; border-radius: 5px; text-align: center; width: 80px; font-weight: normal;">
+								@if ($devolucione->estado==1 or $devolucione->estado=="active")
+									Pendiente
+								@else
+									Finalizado
+								@endif
+								</span>
+							</td>
+							
 							<td class="d-flex justify-content-center">
 								<!-- @can('edit devoluciones')
 								<a href="{{URL::action('App\Http\Controllers\DevolucionesControlador@edit',$devolucione->id)}}" title="Editar datos de este registro"><button class="btn btn-warning btn-sm shadow mx-1"><i class='fa fa-edit'></i></button></a>

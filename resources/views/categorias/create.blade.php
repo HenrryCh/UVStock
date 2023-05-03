@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-dialog-centered " role="document">
     <div class="modal-content">
       <div class="modal-header colorCreate">
-        <h4 class="modal-title" id="modal_Categorias_Create_LongTitle">{{__('Nuevo')}} Categoria</h4>
+        <h4 class="modal-title" id="modal_Categorias_Create_LongTitle">{{__('Nueva')}} Categoría</h4>
         <button type="button" class="btn btn-close btn-add pull-right" data-dismiss="modal" aria-label="Close">X</button>
       </div>
       {!!Form::open(array('url'=>'categorias','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}

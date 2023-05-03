@@ -17,7 +17,7 @@
 {!!Form::open(array('url'=>'devoluciones','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
 {{Form::token()}}
 <div class="card card-primary">
-  <div class="card-header" style="background-color:#FACC2E;color:white;">
+  <div class="card-header" style="background-color: #FFA047;color:white;">
     <h3 class="card-title">Datos del Cliente</h3>
   </div>
   
@@ -56,7 +56,7 @@
           
             
     </div>
-    <div class="card-header" style="background-color:#FACC2E;color:white;">
+    <div class="card-header" style="background-color:#FFA047;color:white;">
       <h3 class="card-title">Producto</h3>
     </div>  
 
@@ -73,7 +73,7 @@
       </div>  
 
     <div class="card card-primary">
-      <div class="card-header" style="background-color:#FACC2E;color:white;">
+      <div class="card-header" style="background-color:#FFA047;color:white;">
           Detalle de Devolución
       </div>
       <div class="card-body">
@@ -117,7 +117,7 @@
 							<div class="form-group">
 								<label>Motivo de Devolución:</label>
 								<select name="motivo_devolucion_id" id="motivo_devolucion_id" class="form-control">
-									<option value="">--SELECCIONE--</option>
+									<option value="">--Seleccione--</option>
 									@foreach ($motivo_devoluciones as $motivo_devolucione)
 										<option {{ old('motivo_devolucion_id') == $motivo_devolucione->id ? 'selected' : '' }} 
                     value="{{$motivo_devolucione->id}}">{{ $motivo_devolucione->nombre }}</option>
@@ -129,7 +129,8 @@
                                                 
           <div class="col-lg-6"> 
                 <div class="form-group">
-                  <a href="#" onclick="agregar();" class="btn btn-warning" title="Presione boton para agregar items a Devoluciones">{{__('Agregar')}}</a>
+                  <a href="#" onclick="agregar();" class="btn btn-add" title="Presione boton para agregar items a Devoluciones">
+                    <i class="fa fa-plus-circle"></i>{{__(' Agregar')}}</a>
                 </div>
           </div>
         </div>

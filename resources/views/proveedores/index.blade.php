@@ -73,10 +73,13 @@
 								<td class="text-center">{{$proveedore->correo}}</td>
 								<td class="text-center">{{$proveedore->direccion}}</td> 
 								{{--  
-								<td class="text-center"><button class="btn @if ($proveedore->estado==1 or $proveedore->estado== "active") btn-success @else btn-secondary @endif  btn-sm">@if ($proveedore->estado==1 or $proveedore->estado=="active") Activo @else Inactivo @endif</button></td>
+
+								<td class="text-center"><button class="btn @if ($proveedore->estado==1 or $proveedore->estado== "active") btn-success @else btn-secondary @endif  btn-sm">
+									@if ($proveedore->estado==1 or $proveedore->estado=="active") Activo @else Inactivo @endif</button></td>
+								
 								--}}
 								<td class="text-center">
-									<span class="badge badge-pill @if ($proveedore->estado==1 or $proveedore->estado== "active") badge-success shadow-sm @else badge-secondary @endif d-inline-block" style="font-size: 14px; font-weight: normal; font-size: 14px;">
+									<span class="badge @if ($proveedore->estado==1 or $proveedore->estado== "active") badge-success @else badge-secondary @endif btn-sm badge" style="font-size: 14px; padding: 5px 10px; border-radius: 5px; text-align: center; width: 65px; font-weight: normal;">
 									@if ($proveedore->estado==1 or $proveedore->estado=="active")
 										Activo
 									@else
@@ -84,8 +87,7 @@
 									@endif
 									</span>
 								</td>
-								  
-								  
+
 								<td class="d-flex justify-content-start">
 									@can('show proveedores')
 			                        <a href="" data-target="#modal-ver-{{$proveedore->id}}" data-toggle="modal" title="Ver datos de este registro"><button class="btn btn-info btn-sm shadow mx-1"><i class='fa fa-eye'></i></button></a>

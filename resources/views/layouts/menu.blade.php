@@ -13,7 +13,8 @@
     </ul>
     --}}
 </li>
-@role('Admin')
+
+@role('Gerente')
 <li class="nav-item">
     <a href="#" class="nav-link">
         <i class="nav-icon fa fa-users"></i>
@@ -24,10 +25,12 @@
     </a>
     <ul class="nav nav-treeview">
         @can('list roles')
-        <li class="nav-item d-none d-lg-block" style="margin-left: 2rem;"> <a class="nav-link" href="{{URL::action('App\Http\Controllers\RolesControlador@index')}}">Roles</a></li>
+        <li class="nav-item"> <a href="{{URL::action('App\Http\Controllers\RolesControlador@index')}}" class="nav-link" style="margin-left: 2rem;">
+            Roles</a></li>
         @endcan
         @can('list users')
-        <li class="nav-item d-none d-lg-block" style="margin-left: 2rem;"> <a class="nav-link" href="{{URL::action('App\Http\Controllers\UsersControlador@index')}}"><i class=""></i>Usuarios</a></li>
+        <li class="nav-item"> <a href="{{URL::action('App\Http\Controllers\UsersControlador@index')}}" class="nav-link" style="margin-left: 2rem;"><i class=""></i>
+            Usuarios</a></li>
         @endcan        
     </ul>
 </li>
@@ -64,7 +67,7 @@
     <a href="{{URL::action('App\Http\Controllers\CategoriasControlador@index')}}" class="nav-link">
         <i class="nav-icon fas fa-th-list"></i>
         <p>
-          Categorias
+          Categorías
           {{--  
           <i class="right fas fa-angle-right"></i>
           --}}
@@ -84,6 +87,7 @@
     --}}
 </li>
 @endcan
+@can('list productos')
 <li class="nav-item">
     <a href="{{URL::action('App\Http\Controllers\ProductosControlador@index')}}" class="nav-link">
         <i class="nav-icon fas fa-box-open"></i>
@@ -108,6 +112,8 @@
     </ul>
     --}}
 </li>
+@endcan
+@can('list ingresos')
 <li class="nav-item">
     <a href="{{URL::action('App\Http\Controllers\IngresosControlador@index')}}" class="nav-link">
         <i class="fas fa-sign-in-alt"></i>
@@ -132,6 +138,8 @@
     </ul>
     --}}
 </li>
+@endcan
+@can('list salidas')
 <li class="nav-item">
     <a href="{{URL::action('App\Http\Controllers\SalidasControlador@index')}}" class="nav-link">
         <i class="fas fa-sign-out-alt"></i>
@@ -156,6 +164,7 @@
     </ul>
     --}}
 </li>
+@endcan
 
 <li class="nav-item">
     <a href="#" class="nav-link">
@@ -264,7 +273,7 @@
 --}}
 <li class="nav-item">
     <a href="#" class="nav-link">
-        <i class="nav-icon far fa-address-book"></i>
+        <i class="nav-icon far fas fa-file-alt"></i>
         <p>
           Reportes
           <i class="right fas fa-angle-right"></i>

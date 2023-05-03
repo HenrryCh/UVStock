@@ -75,7 +75,7 @@
             
             <div class="col-lg-6"> 
               <div class="form-group">
-              	<label for="precio_venta">Precio de Venta *</label>
+              	<label for="precio_venta">Precio de Venta: *</label>
               	<input type="decimal" name="precio_venta"  class="form-control" value="{{ old('precio_venta') }}" placeholder="Ingrese Precio de Venta" required>
                 @error('precio_venta') <div style="color:#FF0000"><strong>* {{ $message }} !!</strong></div> @enderror
               </div>

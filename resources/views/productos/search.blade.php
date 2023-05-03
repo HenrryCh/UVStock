@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-4">
           <div class="form-group">
                 <label style="display: inline-block;">Estado:</label>
                 <select name="estado" id="estado" class="form-control" style="display: inline-block;">
@@ -38,9 +38,9 @@
 </div>
 
 <div class="form-group">
-    <button type="submit" class="btn btn-primary">{{__('Filtrar')}}</button>
+    <button type="submit" class="btn btn-info">
+        <i class="fas fa-sliders-h"></i>{{__(' Filtrar')}}</button>
 </div>
-
 
 {{Form::close()}}
 @push('scripts')

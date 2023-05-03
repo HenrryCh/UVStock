@@ -21,20 +21,18 @@
 {{-- Botones --}}
 
 <div class="row">
-  <div class="col-8">
-    <div class="row">
-      <div class="col-md-12 text-left">
-        <div class="filtro-ventas d-inline-flex" style="font-family: 'Open Sans', sans-serif; margin-top: 10px;">
-          <button class="btn btn-default" onclick="filtrarVentas('hoy');filtrarProductos('hoy');filtrarIngresos('hoy');filtrarSalidas('hoy');">Hoy</button>
-          <button class="btn btn-default" onclick="filtrarVentas('ultimos7dias');filtrarProductos('ultimos7dias');filtrarIngresos('ultimos7dias');filtrarSalidas('ultimos7dias');">Últimos 7 días</button>
-          <button class="btn btn-default" onclick="filtrarVentas('esteMes');filtrarProductos('esteMes');filtrarIngresos('esteMes');filtrarSalidas('esteMes');">Este mes</button>
-          <button class="btn btn-default" onclick="filtrarVentas('esteAno');filtrarProductos('esteAno');filtrarIngresos('esteAno');filtrarSalidas('esteAno');">Este año</button>
-        </div>
-      </div>
+  <div class="col-md-auto">
+    <span style="font-size: 22px;">Inicio</span>
+  </div>
+  <div class="col-md-12 ml-auto text-right">
+    <div class="filtro-ventas d-inline-flex" style="font-family: 'Open Sans', sans-serif; margin-top: 10px;">
+      <button class="btn btn-default" onclick="filtrarVentas('hoy');filtrarProductos('hoy');filtrarIngresos('hoy');filtrarSalidas('hoy');">Hoy</button>
+      <button class="btn btn-default" onclick="filtrarVentas('ultimos7dias');filtrarProductos('ultimos7dias');filtrarIngresos('ultimos7dias');filtrarSalidas('ultimos7dias');">Últimos 7 días</button>
+      <button class="btn btn-default" onclick="filtrarVentas('esteMes');filtrarProductos('esteMes');filtrarIngresos('esteMes');filtrarSalidas('esteMes');">Este mes</button>
+      <button class="btn btn-default" onclick="filtrarVentas('esteAno');filtrarProductos('esteAno');filtrarIngresos('esteAno');filtrarSalidas('esteAno');">Este año</button>
     </div>
   </div>
 </div>
-
 
 <!-- /.content-header -->
 <div class="row" style="font-family: 'Open Sans', sans-serif; margin-top: 10px;">
@@ -44,9 +42,9 @@
     <!-- small box -->
     <div class="small-box bg-white">
       <div class="inner">
-        <center><i class="fas fa-guitar" style="font-size: 3em; color:#F39C12;"></i></center>
+        <center><i class="fas fa-guitar" style="font-size: 2em; color:#fe9365;"></i></center>
         <br>
-        <h5 class="text-center" style="color:#F39C12;">Productos</h5>
+        <h5 class="text-center" style="color:#fe9365;">Productos</h5>
         <h5 class="text-center">{{$conteoProductos}}</h5>
       </div>
       <div class="icon">
@@ -62,9 +60,9 @@
     <!-- small box -->
     <div class="small-box bg-white">
       <div class="inner">
-        <center><i class="nav-icon fas fa-th-list" style="font-size: 3em; color:magenta;"></i></center>
+        <center><i class="nav-icon fas fa-th-list" style="font-size: 2em; color:#f1556c;"></i></center>
         <br>
-        <h5 class="text-center" style="color:magenta;">Categorías</h5>
+        <h5 class="text-center" style="color:#f1556c;">Categorías</h5>
         <h5 class="text-center">{{$conteoCategorias}}</h5>
       </div>
       <div class="icon">
@@ -80,15 +78,15 @@
     <!-- small box -->
     <div class="small-box bg-white">
       <div class="inner">
-      <center><i class="fas fa-sign-in-alt" style="font-size: 3em; color:lightgreen;"></i></center>
+      <center><i class="fas fa-sign-in-alt" style="font-size: 2em; color:#00acac;"></i></center>
         <br>
-        <h5 class="text-center" style="color:lightgreen;">Ingresos</h5>
+        <h5 class="text-center" style="color:#00acac;">Ingresos</h5>
         <h5 class="text-center" id="conteoIngresos">{{$conteoIngresos}}</h5>
       </div>
       <div class="icon">
         <i class="ion ion-bag"></i>
       </div>
-      <a href="{{URL::action('App\Http\Controllers\IngresosControlador@index')}}" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{URL::action('App\Http\Controllers\IngresosControlador@index')}}" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   @endcan
@@ -98,9 +96,9 @@
     <!-- small box -->
     <div class="small-box bg-white">
       <div class="inner">
-      <center><i class="fas fa-sign-out-alt" style="font-size: 3em; color:blue;"></i></center>
+      <center><i class="fas fa-sign-out-alt" style="font-size: 2em; color:#6658dd;"></i></center>
         <br>
-        <h5 class="text-center" style="color:blue;">Salidas</h5>
+        <h5 class="text-center" style="color:#6658dd;">Salidas</h5>
         <h5 class="text-center" id="conteoSalidas">{{$conteoSalidas}}</h5>
       </div>
       <div class="icon">
@@ -134,7 +132,7 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-body">
-          <h5 class="fw-bold"> Salida de productos </h5>
+          <span style="font-size: 20px;"> Salida de productos </span>
           <canvas id="grafico"></canvas>
         </div>
       </div>
@@ -142,7 +140,7 @@
     <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <h5 class="fw-bold"> 5 productos más vendidos</h5>
+          <span style="font-size: 20px;"> 5 productos más vendidos</span>
           <canvas id="grafico2"></canvas>
         </div>
       </div>
@@ -191,7 +189,7 @@ function actualizarGrafico(data){
       labels: etiquetas,
       datasets: [
         {
-          label: "Egreso de productos",
+          label: "Productos",
           data: valores,
           backgroundColor: '#37474F', // Color de las barras
           borderColor: 'black', // Color del borde de las barras
@@ -254,6 +252,7 @@ function actualizarGrafico2(data){
           '#1cc88a',
           '#6658dd',
           '#f1556c',
+
           // agregar más colores aquí si se tienen más datos de ventas
         ],
         borderColor: [

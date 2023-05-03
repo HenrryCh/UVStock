@@ -21,7 +21,7 @@
             <div class="col-lg-12">
            		<div class="form-group">
 	            	<label for="name">Rol *</label>
-	            	<input type="text" name="name" class="form-control" value="{{old('name',$role->name)}}" placeholder="Rol..." {{ $role->name=='Admin' ? 'readonly' : 'required' }}>
+	            	<input type="text" name="name" class="form-control" value="{{old('name',$role->name)}}" placeholder="Rol..." {{ $role->name=='Gerente' ? 'readonly' : 'required' }}>
 	            </div>
             </div>
             
@@ -39,7 +39,7 @@
                   <label></label>
                 </div>
                 <div class="col-lg-1">
-                  <label>Dashboard</label>
+                  <label>Inicio</label>
                 </div>
                 <div class="col-lg-1">
                   <label>Listar</label>
@@ -48,10 +48,10 @@
                   <label>Crear</label>
                 </div>
                 <div class="col-lg-1">
-                  <label>Editar</label>
+                  <label>Ver</label>
                 </div>
                 <div class="col-lg-1">
-                  <label>Ver</label>
+                  <label>Editar</label>
                 </div>
                 {{--  
                 <div class="col-lg-1">
@@ -66,6 +66,7 @@
             @if($role->name == $rol2['name'] )
             @foreach( $rol2['permisos'] as $key2 => $permisito)
               <div style="display: none"> {{ $permiso = collect($permisito)}} </div>
+              @if ($permiso["tabla"] !== 'negocio')
               <div class="row">
                 <div class="col-lg-1">
                   <label></label>
@@ -83,20 +84,32 @@
                   <input type="checkbox" name="crear[{{$key2}}]" value="create {{$permiso["tabla"]}}" {{($permiso["crear"]==1) ? 'checked' : ''}} >
                 </div>
                 <div class="col-lg-1">
-                  <input type="checkbox" name="editar[{{$key2}}]" value="edit {{$permiso["tabla"]}}" {{($permiso["editar"]==1) ? 'checked' : ''}} >
-                </div>
-                <div class="col-lg-1">
                   <input type="checkbox" name="ver[{{$key2}}]" value="show {{$permiso["tabla"]}}" {{($permiso["ver"]==1) ? 'checked' : ''}} >
                 </div>
+                <div class="col-lg-1">
+                  {{--  
+                  <input type="checkbox" name="editar[{{$key2}}]" value="edit {{$permiso["tabla"]}}" {{($permiso["editar"]==1) ? 'checked' : ''}} >
+                --}}
+                  @if ($permiso["tabla"] !== 'salidas' && $permiso["tabla"] !== 'ingresos' && $permiso["tabla"] !== 'devoluciones')
+                    <input type="checkbox" name="editar[{{$key2}}]" value="edit {{$permiso["tabla"]}}" {{($permiso["editar"]==1) ? 'checked' : ''}} >
+                  @endif
+                </div>
+                
                 {{--  
                 <div class="col-lg-1">
                   <input type="checkbox" name="eliminar[{{$key2}}]" value="delete {{$permiso["tabla"]}}" {{($permiso["eliminar"]==1) ? 'checked' : ''}} >
                 </div>
                 --}}
                 <div class="col-lg-1">
+                  {{--  
                   <input type="checkbox" name="reportar[{{$key2}}]" value="report {{$permiso["tabla"]}}" {{($permiso["reportar"]==1) ? 'checked' : ''}} >
+                  --}}
+                  @if ($permiso["tabla"] !== 'categorias' && $permiso["tabla"] !== 'motivo_devoluciones' && $permiso["tabla"] !== 'proveedores')
+                    <input type="checkbox" name="reportar[{{$key2}}]" value="report {{$permiso["tabla"]}}" {{($permiso["reportar"]==1) ? 'checked' : ''}} >
+                  @endif
                 </div>
               </div>
+              @endif
             @endforeach
             @endif
             @endforeach

@@ -48,7 +48,7 @@
                         <img src="{{ asset('img/profile/'.auth()->user()->profile_photo_path) }}" class="user-image img-circle elevation-2" alt="User Image">
                     @else
                         @if (Auth::check() && Auth::user()->name)
-                            <div class="user-initials img-circle elevation-2" style="background-color: #c6e2ff; color: #73a1f0 ; width: 40px; height: 40px; line-height: 40px; text-align: center; font-size: 18px;">
+                            <div class="user-initials img-circle elevation-2" style="background-color: #adb5bd ; color: white ; width: 40px; height: 40px; line-height: 40px; text-align: center; font-size: 18px;">
                                 {{ strtoupper(substr(Auth::user()->nombres, 0, 1).substr(Auth::user()->apellidos, 0, 1)) }}
                             </div>
                         @else
@@ -85,7 +85,7 @@
     <div class="content-wrapper">
         <section class="content">
             @yield('contenido')
-            <div class="card">
+            <div class="card" style="margin-top: 10px;">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -96,16 +96,12 @@
                                             <div class="col-md-12 col-lg-3 text-center" style="max-width: 800px; margin: auto; border-top: 28px solid transparent;"> 
                                                 <div align="center">
                                                     @if (auth()->user()->profile_photo_path)
-                                                        <img id="imgPreview" style="border: 1px solid rgb(152, 149, 149); border-radius: 10px; height: 200px; width: 200px;" class="img-profile"  src="{{ asset('img/profile/'.auth()->user()->profile_photo_path) }}" alt="Profile photo">
+                                                        <img id="imgPreview" class="user-image img-circle elevation-2" style="border: 1px solid rgb(152, 149, 149); border-radius:10px; height: 200px; width: 200px;" class="img-profile"  src="{{ asset('/img/profile/'.auth()->user()->profile_photo_path) }}" alt="Profile photo">
                                                     @else
-                                                        @if (Auth::check() && Auth::user()->name)
-                                                            <div >
-                                                                <img id="imgPreview" class="user-image img-circle elevation-2" style="border: 1px solid rgb(152, 149, 149); border-radius: 10px; height: 200px; width: 200px; background-color:#c6e2ff; color:#73a1f0; display: flex; justify-content: center; align-items: center; font-size: 72px; text-transform: uppercase;"
-                                                                alt="{{ strtoupper(substr(Auth::user()->nombres, 0, 1).substr(Auth::user()->apellidos, 0, 1)) }}" >
-                                                            </div>
-                                                        @else
-                                                            <img id="imgPreview" style="border: 1px solid rgb(152, 149, 149); border-radius: 10px; height: 200px; width: 200px;" class="img-profile"  src="" alt="Profile photo">
-                                                        @endif
+                                                    <div>
+                                                        <img id="imgPreview" class="user-image img-circle elevation-2" style=" line-height:180px; border:1px solid rgb(152, 149, 149); height:200px; width:200px; background-color:#c6e2ff; color:#73a1f0; display: none; display: flex; justify-content: center; align-items: center; font-size: 72px; text-transform: uppercase;"
+                                                        alt="{{ strtoupper(substr(Auth::user()->nombres, 0, 1).substr(Auth::user()->apellidos, 0, 1)) }}" >
+                                                    </div>   
                                                     @endif
                                                 </div>
                                                     <form id="edit-form" action="/profileguardar" enctype="multipart/form-data" method="POST">
@@ -113,13 +109,14 @@
                                                         <div class="modal-body d-flex justify-content-center align-items-center">
                                                             <div class="row">
                                                                 <div class="form-group" align="center">
-                                                                    <button type="button" class="btn btn-add" onclick="document.getElementById('imagen').click()">Seleccionar Foto</button>
+                                                                    <button type="button" class="btn btn-add" onclick="document.getElementById('imagen').click()">
+                                                                        <i class="far fa-user-circle"></i> Seleccionar Foto</button>
                                                                     <input type="file" class="form-control-file" id="imagen" name="imagen" onchange="previewImage(event, '#imgPreview')" style="display:none;">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer d-flex justify-content-center align-items-center">
-                                                        
+
                                                             <button class="btn btn-primary" type="submit">{{__('Guardar')}}</button>
                                                         </div>
                                                     </form>
